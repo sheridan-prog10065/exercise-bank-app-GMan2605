@@ -8,5 +8,14 @@ namespace BankApp
 {
     public class Account
     {
+        private string _accHoldername;
+
+        private int _accNo;
+
+        private double _annualIntrRate;
+
+        private decimal _balance;
+
+
     }
 }
