@@ -12,9 +12,50 @@ namespace BankApp
 
         private int _accNo;
 
-        private double _annualIntrRate;
+        protected double _annualIntrRate;
 
-        private decimal _balance;
+        protected decimal _balance;
+
+
+        #region Properties
+
+        public string AccountHolderName
+        {
+            get
+            {
+                return _accHoldername;
+            }
+        }
+
+        public int AccountNumber
+        {
+            get
+            {
+                return _accNo;
+            }
+        }
+
+        public virtual double AnnualInterestRate
+        {
+            get
+            {
+                return _annualIntrRate;
+            }
+            set
+            {
+                _annualIntrRate = value;
+            }
+        }
+
+        public decimal Balance
+        {
+            get
+            {
+                return _balance;
+            }
+        }
+
+        #endregion
 
 
     }

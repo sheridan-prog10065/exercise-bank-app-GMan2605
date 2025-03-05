@@ -8,5 +8,23 @@ namespace BankApp
 {
     public class SavingsAccount : Account
     {
+        private const double SAVINGS_INTEREST_FACTOR = 1.5;
+
+
+        /// <summary>
+        /// Overriden property that guarantees the addition of the savings interest
+        /// factor for every mutation of the interest rate of an account
+        /// </summary>
+        public override double AnnualInterestRate
+        {
+            get
+            {
+                return _annualIntrRate;
+            }
+            set
+            {
+                _annualIntrRate = value + SAVINGS_INTEREST_FACTOR;
+            }
+        }
     }
 }
