@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,9 +51,29 @@ namespace BankApp
             return $"{_bankName}";
         }
 
-        public Account OpenAccount(string clientName)
+        public Account OpenAccount(string clientName, string accountType)
         {
-            return new Account(DetermineAccountNumber(), clientName);
+            Account account = new Account(DetermineAccountNumber(), clientName);
+
+            switch (accountType)
+            {
+                case "Chequing":
+                    account = new ChequingAccount(DetermineAccountNumber(), clientName);
+                    _accountList.Add(account);
+                    break;
+                case "Savings":
+                    account = new SavingsAccount(DetermineAccountNumber(), clientName);
+                    _accountList.Add(account);
+                    break;
+                default:
+                    Debug.Assert(false, "Failed to find a matching account type to create. Defaulting to chequing");
+                    account = new ChequingAccount(DetermineAccountNumber(), clientName);
+                    _accountList.Add(account);
+                    break;
+            }
+            
+            // Return the account in case caller wants to verify (just style/implementaiton of the UML class diagram)
+            return account;
         }
 
         public void LoadAccountData()
@@ -84,6 +105,7 @@ namespace BankApp
 
         private int DetermineAccountNumber()
         {
+            _nextId += 1;
             return _nextId + ID_START;
         }
 

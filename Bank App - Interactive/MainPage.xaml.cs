@@ -34,8 +34,11 @@ public partial class MainPage : ContentPage
 		// Get the specified account name string from the user
 		string acctName = _etryClientNameInput.Text;
 
+		// Get the prefered account type
+		string prefAcctType = (string)_pckAccountType.SelectedItem;
+
 		// Open the new account
-		selectedBank.OpenAccount(acctName);
+		selectedBank.OpenAccount(acctName, prefAcctType);
     }
 
     private void OnBankChanged(object sender, EventArgs e)

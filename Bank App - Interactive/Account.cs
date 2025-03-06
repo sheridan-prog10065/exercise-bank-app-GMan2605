@@ -76,13 +76,13 @@ namespace BankApp
             return $"account with no. {_accNo}, held by {_accHoldername}, a rate of {_annualIntrRate}, and ${_balance} balance.";
         }
 
-        public Decimal Deposit(double amount)
+        public virtual Decimal Deposit(double amount)
         {
             _balance += (decimal)amount;
             return _balance;
         }
 
-        public decimal Withdraw(double amount)
+        public virtual decimal Withdraw(double amount)
         {
             _balance -= (decimal)amount;
             return _balance;
