@@ -10,6 +10,10 @@ namespace BankApp
     {
         private const double SAVINGS_INTEREST_FACTOR = 1.5;
 
+        public SavingsAccount(int acctNo, string acctHolderName) : base(acctNo, acctHolderName)
+        {
+
+        }
 
         /// <summary>
         /// Overriden property that guarantees the addition of the savings interest

@@ -8,6 +8,8 @@ namespace BankApp
 {
     public class Account
     {
+        #region Fields
+
         private string _accHoldername;
 
         private int _accNo;
@@ -15,7 +17,17 @@ namespace BankApp
         protected double _annualIntrRate;
 
         protected decimal _balance;
+        #endregion
 
+        #region Constructors
+        public Account(int accNo, string accHolderName)
+        {
+            _accHoldername = accHolderName;
+            _accNo = accNo;
+            _annualIntrRate = 0.0;
+            _balance = 0.0m;
+        }
+        #endregion
 
         #region Properties
 
@@ -53,6 +65,32 @@ namespace BankApp
             {
                 return _balance;
             }
+        }
+
+        #endregion
+
+        #region Methods
+        
+        public Decimal Deposit(double amount)
+        {
+            _balance += (decimal)amount;
+            return _balance;
+        }
+
+        public decimal Withdraw(double amount)
+        {
+            _balance -= (decimal)amount;
+            return _balance;
+        }
+
+        public void Load(string file)
+        {
+
+        }
+
+        public void Save(string file)
+        {
+
         }
 
         #endregion

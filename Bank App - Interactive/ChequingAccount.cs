@@ -10,6 +10,12 @@ namespace BankApp
     {
         private const double CHEQUING_INTEREST_FACTOR = 0.25;
 
+        public ChequingAccount(int acctNo, string acctHolderName) : base(acctNo, acctHolderName)
+        {
+
+        }
+
+
         /// <summary>
         /// Overriden property that guarantees the addition of the
         /// chequing interest factor being added for every mutation of
