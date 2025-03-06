@@ -70,7 +70,12 @@ namespace BankApp
         #endregion
 
         #region Methods
-        
+
+        public override string ToString()
+        {
+            return $"account with no. {_accNo}, held by {_accHoldername}, a rate of {_annualIntrRate}, and ${_balance} balance.";
+        }
+
         public Decimal Deposit(double amount)
         {
             _balance += (decimal)amount;

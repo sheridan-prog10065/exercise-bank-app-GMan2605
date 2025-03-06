@@ -15,6 +15,12 @@ namespace BankApp
 
         }
 
+        public override string ToString()
+        {
+            return "Savings " + base.ToString();
+        }
+
+
         /// <summary>
         /// Overriden property that guarantees the addition of the savings interest
         /// factor for every mutation of the interest rate of an account

@@ -15,6 +15,11 @@ namespace BankApp
 
         }
 
+        public override string ToString()
+        {
+            return "Chequing " + base.ToString();
+        }
+
 
         /// <summary>
         /// Overriden property that guarantees the addition of the

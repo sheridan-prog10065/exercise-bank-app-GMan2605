@@ -72,10 +72,13 @@ namespace BankApp
 
         private void CreateDefaultAccounts()
         {
-            for (int iAccount=0; iAccount<10; iAccount++)
+            for (int iAccount=0; iAccount<5; iAccount++)
             {
-                Account account = new Account(DetermineAccountNumber(), "Gavin");
-                _accountList.Add(account);
+                Account savingsAccount = new SavingsAccount(DetermineAccountNumber(), "Gavin");
+                _accountList.Add(savingsAccount);
+
+                Account chequingAccount = new ChequingAccount(DetermineAccountNumber(), "Gavin");
+                _accountList.Add(chequingAccount);
             }
         }
 
