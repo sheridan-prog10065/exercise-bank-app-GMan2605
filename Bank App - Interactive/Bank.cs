@@ -1,32 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BankApp
 {
+
     public class Bank
     {
+        private string _bankName;
+
         /// <summary>
         /// List container for all accounts in this bank
         /// </summary>
-        private List<Account> _accountList;
+        private ObservableCollection<Account> _accountList;
 
         private const int ID_START = 100;
 
         private int _nextId;
 
-        public Bank()
+        public Bank(string bankName)
         {
-            _accountList = new List<Account>();
+            _bankName = bankName;
+            _accountList = new ObservableCollection<Account>();
             _nextId = 0;
 
             // Create some default accounts upon creation
             CreateDefaultAccounts();
         }
 
+        #region Properties
+
+        public ObservableCollection<Account> Accounts
+        {
+            get
+            {
+                return _accountList;
+            }
+        }
+
+        #endregion
+
         #region Methods
+
+        public override string ToString()
+        {
+            return $"{_bankName}";
+        }
+
         public Account OpenAccount(string clientName)
         {
             return new Account(DetermineAccountNumber(), clientName);
@@ -39,7 +62,7 @@ namespace BankApp
 
         public void SaveAccountData()
         {
-
+            
         }
 
         public Account FindAccount(int accNo)

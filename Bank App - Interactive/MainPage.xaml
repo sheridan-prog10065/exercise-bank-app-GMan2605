@@ -18,14 +18,14 @@
 
         <VerticalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
             <Label Text="Pick a Bank to View Accounts:"></Label>
-            <Picker x:Name="_pckBank"></Picker>
+            <Picker x:Name="_pckBank" SelectedIndexChanged="OnBankChanged"></Picker>
         </VerticalStackLayout>
 
         <Entry x:Name="_etryClientNameInput" 
                Grid.Row="3" Grid.Column="0"
                Placeholder="Type the account holder's name"></Entry>
 
-        <Button Grid.Row="3" Grid.Column="1" Text="Open Account" FontSize="Medium"></Button>
+        <Button Grid.Row="3" Grid.Column="1" Text="Open Account" FontSize="Medium" Clicked="OnOpenAcctClicked"></Button>
         
 
     </Grid>
