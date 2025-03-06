@@ -2,9 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankApp.MainPage">
-			 
-    <Label Text="Startup project for the Interactive MAUI Bank App exercise."
-           HorizontalOptions="Center"
-           VerticalOptions="Center"/>
- 
+
+    <Grid RowDefinitions="Auto, 3*, *, *, *" ColumnDefinitions="*, *"
+          Padding="15" Margin="50"
+          RowSpacing="30" ColumnSpacing="30">
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+               Text="Gavin's Banking App" FontSize="Header" TextDecorations="Underline" HorizontalOptions="Center"/>
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <CollectionView x:Name="_cvAccounts" SelectionMode="Single">
+
+            </CollectionView>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Label Text="Pick a Bank to View Accounts:"></Label>
+            <Picker x:Name="_pckBank"></Picker>
+        </VerticalStackLayout>
+
+        <Entry x:Name="_etryClientNameInput" 
+               Grid.Row="3" Grid.Column="0"
+               Placeholder="Type the account holder's name"></Entry>
+
+        <Button Grid.Row="3" Grid.Column="1" Text="Open Account" FontSize="Medium"></Button>
+        
+
+    </Grid>
+
 </ContentPage>
