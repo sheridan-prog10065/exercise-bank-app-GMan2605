@@ -73,7 +73,7 @@ namespace BankApp
 
         public override string ToString()
         {
-            return $"account with no. {_accNo}, held by {_accHoldername}, a rate of {_annualIntrRate}, and ${_balance} balance.";
+            return $"account with no. {_accNo}, held by {_accHoldername}, a rate of {_annualIntrRate}, and ${Math.Round(_balance, 2)} balance.";
         }
 
         public virtual Decimal Deposit(double amount)

@@ -36,7 +36,15 @@
         </VerticalStackLayout>
 
         <Button Grid.Row="3" Grid.Column="2" Text="Open Account" FontSize="Medium" Clicked="OnOpenAcctClicked"></Button>
-        
+
+
+        <Entry x:Name="_etryAmount"
+               Grid.Row="4" Grid.Column="0"
+               Placeholder="Type the $ amount to deposit or withdraw here"
+               />
+
+        <Button Grid.Row="4" Grid.Column="1" FontSize="Medium" Text="Deposit" Clicked="OnDeposit"/>
+        <Button Grid.Row="4" Grid.Column="2" FontSize="Medium" Text="Withdraw" Clicked="OnWithdraw"/>
 
     </Grid>
 

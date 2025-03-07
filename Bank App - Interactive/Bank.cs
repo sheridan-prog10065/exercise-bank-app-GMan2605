@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -88,7 +89,14 @@ namespace BankApp
 
         public Account FindAccount(int accNo)
         {
-            return new Account(0, "Gavin");
+            for (int iAccount = 0; iAccount < _accountList.Count(); iAccount++)
+            {
+                if (accNo == _accountList[iAccount].AccountNumber)
+                {
+                    return _accountList[iAccount];
+                }
+            }
+            throw new Exception("No accounts were found");
         }
 
         private void CreateDefaultAccounts()

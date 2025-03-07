@@ -43,6 +43,56 @@ public partial class MainPage : ContentPage
 
     private void OnBankChanged(object sender, EventArgs e)
     {
-		_cvAccounts.ItemsSource = ((Bank)_pckBank.SelectedItem).Accounts;
+		RefreshCVAccounts();
+    }
+
+	private void RefreshCVAccounts()
+	{
+		_cvAccounts.ItemsSource = null;
+        _cvAccounts.ItemsSource = ((Bank)_pckBank.SelectedItem).Accounts;
+    }
+
+    private void OnDeposit(object sender, EventArgs e)
+    {
+		// Try to obtain the selected account in the collectionview
+		Account selectedAccount;
+        try
+		{
+            selectedAccount = (Account)_cvAccounts.SelectedItem;
+        }
+		catch (InvalidCastException) // Catch an invalid cast and preemptively end the call
+		{
+			return;
+		}
+
+		// Get the specified dollar amount
+		double amount = double.Parse(_etryAmount.Text);
+
+		// Deposit the money
+		selectedAccount.Deposit(amount);
+
+		RefreshCVAccounts(); // Refresh the collection view to display the new ToStrings
+    }
+
+    private void OnWithdraw(object sender, EventArgs e)
+    {
+		// Try to obtain the selected account in the collectionview
+		Account selectedAccount;
+		try
+		{
+			selectedAccount = (Account)_cvAccounts.SelectedItem;
+		}
+		catch (InvalidCastException) // Catch an invalid cast and preemptively end the call
+        {
+			return;
+		}
+
+		// Get the specified dollar amount
+		double amount = double.Parse(_etryAmount.Text);
+
+		// Withdraw the money
+		selectedAccount.Withdraw(amount);
+
+        RefreshCVAccounts(); // Refresh the collection view to display the new ToStrings
     }
 }
