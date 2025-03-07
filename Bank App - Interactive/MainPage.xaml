@@ -2,9 +2,50 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BankApp.MainPage">
-			 
-    <Label Text="Startup project for the Interactive MAUI Bank App exercise."
-           HorizontalOptions="Center"
-           VerticalOptions="Center"/>
- 
+
+    <Grid RowDefinitions="Auto, 3*, *, *, *" ColumnDefinitions="*, *, *"
+          Padding="15" Margin="50"
+          RowSpacing="30" ColumnSpacing="30">
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+               Text="Gavin's Banking App" FontSize="Header" TextDecorations="Underline" HorizontalOptions="Center"/>
+
+        <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <CollectionView x:Name="_cvAccounts" SelectionMode="Single">
+
+            </CollectionView>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <Label Text="Pick a Bank to View Accounts:"></Label>
+            <Picker x:Name="_pckBank" SelectedIndexChanged="OnBankChanged"></Picker>
+        </VerticalStackLayout>
+
+        <Entry x:Name="_etryClientNameInput" 
+               Grid.Row="3" Grid.Column="0"
+               Placeholder="Type the account holder's name"></Entry>
+
+        <VerticalStackLayout Grid.Row="3" Grid.Column="1">
+            <Label Text="Account Type: "/>
+            <Picker x:Name="_pckAccountType">
+                <Picker.Items>
+                    <x:String>Chequing</x:String>
+                    <x:String>Savings</x:String>
+                </Picker.Items>
+            </Picker>
+        </VerticalStackLayout>
+
+        <Button Grid.Row="3" Grid.Column="2" Text="Open Account" FontSize="Medium" Clicked="OnOpenAcctClicked"></Button>
+
+
+        <Entry x:Name="_etryAmount"
+               Grid.Row="4" Grid.Column="0"
+               Placeholder="Type the $ amount to deposit or withdraw here"
+               />
+
+        <Button Grid.Row="4" Grid.Column="1" FontSize="Medium" Text="Deposit" Clicked="OnDeposit"/>
+        <Button Grid.Row="4" Grid.Column="2" FontSize="Medium" Text="Withdraw" Clicked="OnWithdraw"/>
+
+    </Grid>
+
 </ContentPage>
